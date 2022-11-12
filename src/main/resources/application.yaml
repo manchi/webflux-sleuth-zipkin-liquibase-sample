@@ -1,0 +1,57 @@
+server:
+  port: 8083
+
+#spring.sleuth.sampler.percentage=1.0
+spring:
+  #  sleuth:
+  #    sampler:
+  #      probability: 1.0
+  #      percentage: 1.0
+  zipkin:
+    enabled: true
+    baseUrl: http://localhost:9411/
+
+  application:
+    name: books-library
+
+  liquibase:
+    enabled: true
+    drop-first: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    contexts: test
+
+  h2:
+    console:
+      enabled: true
+      # http://localhost:8083/console
+      path: /h2
+      settings:
+        trace: false
+        web-allow-others: false
+
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:tutorials_db;DB_CLOSE_ON_EXIT=FALSE
+    #    url: jdbc:h2:file:~/h2/tutorials_db;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: admin123
+
+    hikari:
+      connectionTimeout: 20000
+      maxiumPoolSize: 5
+
+    jpa:
+      hibernate:
+        ddl-auto: create
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.H2Dialect
+          format_sql: true
+          generate_statistics: true
+      show-sql: true
+
+
+#  r2dbc:
+#    url: r2dbc:h2:file:~/h2/tutorials_db?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+#    name: sa
+#    password:

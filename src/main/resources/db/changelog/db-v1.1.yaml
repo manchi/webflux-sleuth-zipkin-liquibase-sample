@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: version-4.0
+      author: db_admin@website.com
+      changes:
+        - sqlFile:
+            path: db/sql/v4-insert.sql
+        - tagDatabase:
+            tag: tag-v4.0
+  - changeSet:
+      id: version-5.0
+      author: db_admin@website.com
+      changes:
+        - sqlFile:
+            path: db/sql/v5-insert.sql
+        - tagDatabase:
+            tag: tag-v5.0

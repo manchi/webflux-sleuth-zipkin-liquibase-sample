@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: version-6.0
+      author: db_admin@website.com
+      changes:
+        - sqlFile:
+            path: db/sql/v6-insert.sql
+        - tagDatabase:
+            tag: tag-v6.0
